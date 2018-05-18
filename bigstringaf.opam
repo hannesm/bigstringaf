@@ -18,6 +18,7 @@ depends: [
   "base-bigarray"
 ]
 depopts: [
-  "mirage-xen-ocaml"
+  "mirage-xen"
+  "ocaml-freestanding"
 ]
 available: [ ocaml-version >= "4.03.0" ]

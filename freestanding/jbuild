@@ -1,0 +1,18 @@
+(rule
+ ((targets (cflags.sexp))
+  (deps    (cflags.sh))
+  (action  (bash "./${<} > ${@}"))))
+
+(library
+ ((name        bigstringaf_freestanding)
+  (public_name bigstringaf.freestanding)
+  (libraries   (bigstringaf))
+  (optional)
+  (virtual_deps (ocaml-freestanding))
+  (c_names (bigstringaf_stubs_freestanding))
+  (c_flags (-Wall -Wextra -Wpedantic))
+  (c_flags (:include cflags.sexp))
+  ))
+
+(rule (copy# ../lib/bigstringaf_stubs.c bigstringaf_stubs_freestanding.c))
+
